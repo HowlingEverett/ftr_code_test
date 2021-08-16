@@ -1,6 +1,6 @@
 import range from "lodash/range"
 
-import { FrequencyGenerator } from "./"
+import { FrequencyGenerator } from "./frequencyGenerator"
 
 let frequencyGenerator: FrequencyGenerator
 
