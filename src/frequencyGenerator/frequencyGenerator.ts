@@ -1,5 +1,6 @@
 type Frequencies = Map<number, number>
-type ReportingTuples = [number, number][]
+
+export type ReportingTuples = [number, number][]
 
 export class FrequencyGenerator {
   frequencies: Frequencies
