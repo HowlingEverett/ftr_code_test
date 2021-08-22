@@ -14,6 +14,7 @@ import {
   SET_RUNNING,
   COUNT_NUMBER,
 } from "./frequencyGenerator/frequencyReducer"
+import { isFibonacci } from "./frequencyGenerator"
 
 const INITIAL_STATE: FrequencyReducerState = {
   numberFrequencies: {},
@@ -23,9 +24,12 @@ const INITIAL_STATE: FrequencyReducerState = {
 function App() {
   const [state, dispatch] = useReducer(frequencyReducer, INITIAL_STATE)
   const [countBuffer, setCountBuffer] = useState<number[]>([])
+  const [foundFibonacci, setFoundFibonacci] = useState<boolean>(false)
   const { isRunning, reportingFrequency = 0 } = state
 
   const flushCount = () => {
+    // Clear any fibonacci report
+    setFoundFibonacci(false)
     // Flush the count buffer into the store on reportingFrequency interval
     countBuffer.forEach((n) => {
       dispatch({ type: COUNT_NUMBER, numberToCount: n })
@@ -47,6 +51,10 @@ function App() {
     // In order to simulate 'only update the UI on a set frequncy, we buffer
     // input counting instead of writing them directly to the store
     setCountBuffer([...countBuffer, n])
+
+    if (isFibonacci(n)) {
+      setFoundFibonacci(true)
+    }
   }
 
   return (
@@ -65,7 +73,10 @@ function App() {
           </div>
         )}
 
-        <FrequencyLogger report={reportingTuples(state)} />
+        <FrequencyLogger
+          report={reportingTuples(state)}
+          isFibonacci={foundFibonacci}
+        />
       </div>
     </div>
   )

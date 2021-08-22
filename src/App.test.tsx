@@ -58,7 +58,7 @@ describe("Frequency Counter web application", () => {
     expect(numberInput).not.toHaveAttribute("disabled")
   })
 
-  test("updates input counts while timer is running", async () => {
+  test("updates input counts while timer is running", () => {
     render(<App />)
 
     const frequencyInput = screen.getByLabelText("Enter a reporting frequency")
@@ -96,6 +96,33 @@ describe("Frequency Counter web application", () => {
     })
 
     expect(reportedText(reportLog)).toEqual(["6:3", "12:1"])
+  })
+
+  test("reports when a counted number is a fibonacci number", () => {
+    render(<App />)
+
+    const frequencyInput = screen.getByLabelText("Enter a reporting frequency")
+    const startButton = screen.getByText("Start")
+    const numberInput = screen.getByLabelText("Enter a number to count")
+    const countButton = screen.getByText("Count")
+    const reportLog = screen.getByTestId("frequency-logger")
+
+    fireEvent.change(frequencyInput, { target: { value: "10" } })
+    fireEvent.click(startButton)
+
+    // Enter a fibonacci number and hit count
+    fireEvent.change(numberInput, { target: { value: "3" } })
+    fireEvent.click(countButton)
+
+    expect(reportLog).toHaveTextContent("We've got fibonacci sign!")
+
+    act(() => {
+      jest.advanceTimersByTime(10001)
+    })
+
+    // After the next reporting flush, report should go back to displaying
+    // counts
+    expect(reportedText(reportLog)).toEqual(["3:1"])
   })
 })
 

@@ -2,9 +2,16 @@ import { ReportingTuples } from "../frequencyGenerator/"
 
 type FrequencyLoggerProps = {
   report?: ReportingTuples
+  isFibonacci: boolean
 }
 
-export const FrequencyLogger = ({ report }: FrequencyLoggerProps) => {
+export const FrequencyLogger = ({
+  report,
+  isFibonacci = false,
+}: FrequencyLoggerProps) => {
+  if (isFibonacci) {
+    return <div data-testid="frequency-logger">We've got fibonacci sign!</div>
+  }
   return (
     <div data-testid="frequency-logger">
       {report && report.length > 0 && (
