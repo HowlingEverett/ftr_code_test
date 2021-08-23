@@ -3,6 +3,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "test": "npm test -w ui -- --watchAll=false && npm test -w frequency-generator"
+  },
   "dependencies": {
     "typescript": "^4.3.5",
     "lodash": "^4.17.21"
