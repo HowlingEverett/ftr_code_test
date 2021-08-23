@@ -28,7 +28,7 @@ export const NumberInput = ({ onNumberInput, isRunning }: NumberInputProps) => {
         onChange={onChange}
         disabled={!isRunning}
       />
-      <button type="button" onClick={onButtonClick}>
+      <button type="button" onClick={onButtonClick} disabled={!isRunning}>
         Count
       </button>
     </>

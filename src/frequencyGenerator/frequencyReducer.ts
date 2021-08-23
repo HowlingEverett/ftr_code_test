@@ -23,7 +23,7 @@ export type SetReportingFrequencyAction = {
   frequency: number
 }
 
-type FrequencyReducerActionType =
+export type FrequencyReducerActionType =
   | CountNumberAction
   | SetRunningAction
   | SetReportingFrequencyAction
@@ -38,7 +38,7 @@ export type FrequencyReducerState = {
 
 export type ReportingTuples = [number, number][]
 
-const INITIAL_STATE = { numberFrequencies: {}, isRunning: false }
+export const INITIAL_STATE = { numberFrequencies: {}, isRunning: false }
 
 export const frequencyReducer = (
   state: FrequencyReducerState = INITIAL_STATE,
