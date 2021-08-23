@@ -1,8 +1,8 @@
-import { ReportingTuples } from "../frequencyGenerator/"
+import { ReportingTuples } from "frequency-generator"
 
 type FrequencyLoggerProps = {
   report?: ReportingTuples
-  isFibonacci: boolean
+  isFibonacci?: boolean
 }
 
 export const FrequencyLogger = ({

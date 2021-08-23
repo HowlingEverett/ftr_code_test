@@ -1,0 +1,26 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "description": "CLI for the Frequency Reporting app",
+  "dependencies": {
+    "inquirer": "^8.1.2"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HowlingEverett/ftr_code_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HowlingEverett/ftr_code_test/issues"
+  },
+  "homepage": "https://github.com/HowlingEverett/ftr_code_test#readme",
+  "devDependencies": {
+    "@types/inquirer": "^7.3.3"
+  }
+}

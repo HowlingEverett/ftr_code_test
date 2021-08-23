@@ -1,11 +1,6 @@
 import { useReducer, useState } from "react"
 import useInterval from "react-useinterval"
 
-import "./App.css"
-
-import { FrequencyInput } from "./components/FrequencyInput"
-import { NumberInput } from "./components/NumberInput"
-import { FrequencyLogger } from "./components/FrequencyLogger"
 import {
   frequencyReducer,
   FrequencyReducerState,
@@ -13,8 +8,14 @@ import {
   SET_REPORTING_FREQUENCY,
   SET_RUNNING,
   COUNT_NUMBER,
-} from "./frequencyGenerator/frequencyReducer"
-import { isFibonacci } from "./frequencyGenerator"
+} from "frequency-generator/frequencyReducer"
+import { isFibonacci } from "frequency-generator"
+
+import "./App.css"
+
+import { FrequencyInput } from "./components/FrequencyInput"
+import { NumberInput } from "./components/NumberInput"
+import { FrequencyLogger } from "./components/FrequencyLogger"
 
 const INITIAL_STATE: FrequencyReducerState = {
   numberFrequencies: {},

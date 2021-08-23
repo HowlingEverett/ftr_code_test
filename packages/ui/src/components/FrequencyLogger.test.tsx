@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 
-import { ReportingTuples } from "../frequencyGenerator"
+import { ReportingTuples } from "frequency-generator"
 import { FrequencyLogger } from "./FrequencyLogger"
 
 describe("FrequencyLogger component", () => {
