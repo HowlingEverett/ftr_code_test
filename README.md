@@ -23,7 +23,7 @@ ftr_code_test
 
 Since I'm using npm workspaces, you'll need npm >= 7 - the easiest way is to
 make sure  you're running Node 16 or above. Yarn workspaces will also work
-with older Node versions  but you'll have no lockfile so I can't guarantee 
+with older Node versions, but as you'll have no lockfile, I can't guarantee 
 the dependencies will match perfectly.
 
 Given the correct prerequisites, install all dependencies via npm:
@@ -91,8 +91,8 @@ list of requirements before I'd consider it 'safe to stick onto the public web'.
 - Network load management
 
 If I planned on the application having a diverse user base (as we all should),
-I'd also want to test and extend the application as a minumum with:
+I'd also want to test and extend the application at least with:
 
 - Reasonable accessibility, at least intelligible to screen readers and
-  interactive via keyboard and keyboard-adjacent assistive technlogy
+  interactive via keyboard and keyboard-adjacent assistive technology
 - Internationalisation for the regions I'd expect it to see use
