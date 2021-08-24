@@ -4,12 +4,12 @@ import {
   frequencyReducer,
   FrequencyReducerState,
   FrequencyReducerActionType,
-  reportingString,
   SET_REPORTING_FREQUENCY,
   SET_RUNNING,
   COUNT_NUMBER,
-} from "frequency-generator/frequencyReducer"
-import { isFibonacci } from "frequency-generator"
+  reportingString,
+  isFibonacci,
+} from "frequency-generator"
 import { parseInt } from "lodash"
 
 export class FrequencyReportingCLI {
