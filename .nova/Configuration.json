@@ -1,5 +1,0 @@
-{
-  "prettier.default-config.semi" : "Disable",
-  "prettier.default-config.singleQuote" : "Disable",
-  "prettier.module.path" : "\/Users\/justinmarrington\/code\/ftr_code_test\/node_modules\/prettier"
-}

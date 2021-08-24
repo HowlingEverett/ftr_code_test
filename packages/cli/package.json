@@ -1,0 +1,16 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "description": "CLI for the Frequency Reporting app",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.2"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^7.3.3"
+  }
+}

@@ -21,7 +21,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "packages/ui/src",
-    "packages/frequency-generator"
+    "src"
   ]
 }

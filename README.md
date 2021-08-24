@@ -1,46 +1,98 @@
-# Getting Started with Create React App
+# For the Record Code Test Implementation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi. This is my (Justin Marrington's) implementation of the For the Record code
+test.
 
-## Available Scripts
+## Getting around
 
-In the project directory, you can run:
+I've implemented both a simple React web application and a basic interactive 
+CLI to the  specified functionality. This repository uses a few NPM workspaces
+to manage the separate implementations and shared data layer.
 
-### `npm start`
+The workspaces that contain my implementation code are under the `packages` directory:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+ftr_code_test
+  - packages
+    - frequency-generator # Shared data layer - both UIs use this package
+    - ui                  # React Web UI implementation
+    - cli                 # Simple interactive TTY build on inquirer.js  
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting set up
 
-### `npm test`
+Since I'm using npm workspaces, you'll need npm >= 7 - the easiest way is to
+make sure  you're running Node 16 or above. Yarn workspaces will also work
+with older Node versions  but you'll have no lockfile so I can't guarantee 
+the dependencies will match perfectly.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Given the correct prerequisites, install all dependencies via npm:
 
-### `npm run build`
+```shell
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Accessing the UIs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The web UI is implemented over React Scripts for simplicity, so it's
+straightforward to bring up a development webpack-dev-server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```shell
+npm start -w ui
+```
 
-### `npm run eject`
+The CLI is a naive interactive TTY, which must be transpiled one from
+Typescript before running directly.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```shell
+npm run build -w cli
+npm start -w cli
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running tests
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I have suites of Jest tests for the web UI and shared layer, runnable via the
+top package:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```shell
+npm test # runs "npm test -w ui && npm test -w frequency-generator" 
+```
 
-## Learn More
+## Part 2 Answers
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Implement a second UI
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I've answered this question via an implementation. The nice thing about the
+reducer function pattern as a data layer is that it's a pure function, so
+by nature has no side effects and is very portable and reusable. While React
+provides the `useReducer` hook for hooking a reducer up to UI components,
+it was also trivial to wrap that same state tree and reducer into the plain
+class-based CLI. My own `FrequencyReportingCLI.dispatch` method simply
+executes the reducer with an action and holds onto the latest state object.
+
+The first implementation of the test (just the Web UI) used simple `useState`
+data layers within the application components, restructuring even this simple
+state tree into a reducer pattern allowed me to share it with the secondary
+UI.
+
+Even in a non-trivial application, data layers that maintain functional purity
+are a *good idea®*, since it separates the source of truth from the
+asynchronous and environment-specific nature of e.g. API networking code.
+
+### Making the application production ready
+
+Even with a trivial web application with no persistent database has a long
+list of requirements before I'd consider it 'safe to stick onto the public web'.
+
+- Containerisation of the app with dependency and application layers
+- Static build and deployment automation
+- A CDN for static assets
+- Health and load monitoring, with automated alerting
+- Network load management
+
+If I planned on the application having a diverse user base (as we all should),
+I'd also want to test and extend the application as a minumum with:
+
+- Reasonable accessibility, at least intelligible to screen readers and
+  interactive via keyboard and keyboard-adjacent assistive technlogy
+- Internationalisation for the regions I'd expect it to see use
