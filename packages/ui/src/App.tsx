@@ -68,11 +68,11 @@ function App() {
 
         <NumberInput onNumberInput={onNumberInput} isRunning={isRunning} />
 
-        {isRunning && (
-          <div className="reporting-frequency">
-            Reporting frequency: {reportingFrequency} seconds
-          </div>
-        )}
+        <div className="reporting-frequency" data-testid="reporting-frequency">
+          {isRunning
+            ? `Reporting frequency: ${reportingFrequency} seconds`
+            : "Paused"}
+        </div>
 
         <FrequencyLogger
           report={reportingTuples(state)}

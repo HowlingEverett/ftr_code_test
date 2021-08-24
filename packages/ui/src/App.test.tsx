@@ -46,7 +46,7 @@ describe("Frequency Counter web application", () => {
     fireEvent.change(frequencyInput, { target: { value: "10" } })
     fireEvent.click(startButton)
 
-    const frequencyReportLabel = screen.getByText(/Reporting frequency:/)
+    const frequencyReportLabel = screen.getByTestId("reporting-frequency")
     expect(frequencyReportLabel).toBeInTheDocument()
     expect(frequencyReportLabel).toHaveTextContent(
       "Reporting frequency: 10 seconds"

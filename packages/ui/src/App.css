@@ -1,38 +1,79 @@
+* html {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+html, body, #root, .App, .App-content {
+  height: 100%;
+}
+
 .App {
-  text-align: center;
+  font-size: 1.8rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App-content {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  flex: 0 1 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.number-input-group {
+  background-color: #e3e3e3;
+  transition: background-color 0.1s ease-out, color 0.1s ease-out;
+}
+
+.number-input-group.active {
+  background-color: #ee6c4dff;
+  color: #fff;
+}
+
+.frequency-input-group {
+  background: #e0fbfcff;
+}
+
+.label {
+  display: block;
+  flex: 1 0 100%;
+  margin-bottom: 0.5rem;
+}
+
+.input, .button {
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.input {
+  flex: 1 0 auto;
+  margin-right: 0.5rem;
+}
+
+.button {
+  flex: 0 0 8rem;
+}
+
+.reporting-frequency {
+  background-color: #293241;
+  color: #fff;
+  padding: 1rem;
+}
+
+.frequency-logger-container {
+  padding: 1rem;
+  flex: 1 0;
+}
+
+.frequency-logger-list {
+  margin: 0;
+  padding-inline-start: 0;
+}
+
+.frequency-logger-list-item {
+  list-style: none;
 }

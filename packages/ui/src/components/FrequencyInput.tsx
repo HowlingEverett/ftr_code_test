@@ -25,8 +25,10 @@ export const FrequencyInput = ({
   }
 
   return (
-    <div>
-      <label htmlFor="frequency-input">Enter a reporting frequency</label>
+    <div className="input-group frequency-input-group">
+      <label htmlFor="frequency-input" className="label frequency-input-label">
+        Enter a reporting frequency
+      </label>
       <input
         name="frequency-input"
         id="frequency-input"
@@ -34,8 +36,14 @@ export const FrequencyInput = ({
         value={value}
         onChange={onChange}
         disabled={isRunning}
+        className="input frequency-input"
       />
-      <button id="start-button" onClick={onStartClick} disabled={startDisabled}>
+      <button
+        id="start-button"
+        onClick={onStartClick}
+        disabled={startDisabled}
+        className="button number-input-button"
+      >
         {isRunning ? "Pause" : "Start"}
       </button>
     </div>

@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react"
 import { parseInt } from "lodash"
+import classNames from "classnames"
 
 type NumberInputProps = {
   onNumberInput: (n: number) => void
@@ -16,10 +17,17 @@ export const NumberInput = ({ onNumberInput, isRunning }: NumberInputProps) => {
   }
   const onButtonClick = () => {
     onNumberInput(parseInt(inputValue) || 0)
+    setInputValue("")
   }
   return (
-    <>
-      <label htmlFor="number-input">Enter a number to count</label>
+    <div
+      className={classNames("input-group", "number-input-group", {
+        active: isRunning,
+      })}
+    >
+      <label htmlFor="number-input" className="label number-input-label">
+        Enter a number to count
+      </label>
       <input
         type="number"
         id="number-input"
@@ -27,10 +35,16 @@ export const NumberInput = ({ onNumberInput, isRunning }: NumberInputProps) => {
         value={inputValue}
         onChange={onChange}
         disabled={!isRunning}
+        className="input text number-input"
       />
-      <button type="button" onClick={onButtonClick} disabled={!isRunning}>
+      <button
+        type="button"
+        onClick={onButtonClick}
+        disabled={!isRunning || inputValue.length === 0}
+        className="button number-input-button"
+      >
         Count
       </button>
-    </>
+    </div>
   )
 }
