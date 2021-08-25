@@ -30,6 +30,7 @@ Given the correct prerequisites, install all dependencies via npm:
 
 ```shell
 npm install
+npm run build # Builds the non-Webpack packages
 ```
 
 ## Accessing the UIs
@@ -45,7 +46,6 @@ The CLI is a naive interactive TTY, which must be transpiled one from
 Typescript before running directly.
 
 ```shell
-npm run build -w cli
 npm start -w cli
 ```
 

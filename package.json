@@ -4,7 +4,8 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "npm test -w ui -- --watchAll=false && npm test -w frequency-generator"
+    "test": "npm test -w ui -- --watchAll=false && npm test -w frequency-generator",
+    "build": "npm run build -w frequency-generator && npm run build -w cli && npm run build -w ui"
   },
   "dependencies": {
     "typescript": "^4.3.5",
